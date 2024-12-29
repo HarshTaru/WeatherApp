@@ -10,12 +10,15 @@ async function checkweather(city) {
     const response = await fetch(apiurl + city+ `&appid=${apikey}`);
     // console.log(response);
     var data = await response.json();
-    // console.log(data);
+    console.log(data);
 
     document.querySelector(".city").innerHTML = data.name;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
+    document.querySelector(".min").innerHTML = Math.round(data.main.temp_min) + "°C";
+    document.querySelector(".max").innerHTML = Math.round(data.main.temp_max) + "°C";
+
 
     if(data.weather[0].main == "Clouds"){
         weathericon.src = 'assets/partly-cloudy.png';
@@ -40,5 +43,11 @@ async function checkweather(city) {
 }
 
 searchbtn.addEventListener("click", () => {
-    checkweather(searchbox.value);
+    checkweather(searchbox.value.trim());
+})
+
+searchbox.addEventListener('keydown',(event)=>{
+    if(event.key === 'Enter'){
+        checkweather(searchbox.value.trim());
+    }
 })

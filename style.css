@@ -7,14 +7,19 @@
 
 body{
     background: #222;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #00feba ,#5b548a);
 }
 
 .card{
     width: 90%;
     max-width: 470px;
-    background: linear-gradient(135deg, #00feba ,#5b548a);
     color:#fff;
-    margin: 100px auto 0;
+    /* margin: auto auto 0; */
     border-radius: 20px;
     padding: 40px 35px;
     text-align: center;
@@ -76,13 +81,21 @@ body{
 
 .details{
     display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    gap:20px;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
     margin-top: 50px;
 }
-
+@media (max-width: 768px) {
+    .details {
+        flex-direction: column; /* Switch to column for small screens */
+    }
+}
 .col{
+    width: 40%;
     display: flex;
     align-items: center;
     text-align: left;
@@ -93,7 +106,7 @@ body{
     margin-right: 10px;
 }
 
-.humidity ,.wind{
+.humidity ,.wind, .min, .max{
     font-size: 28px;
     margin-top: -6px;
 }
